@@ -51,7 +51,10 @@ export default {
   },
   destroy(el, { modifiers }) {
     // 取交集 =>  得到eventNames 和 modifiers
-    const intersection = getIntersection(EVENT_NAMES, Object.keys(modifiers));
+    const intersection = getIntersection(
+      EVENT_NAMES,
+      Object.keys(modifiers)
+    ).filter(_ => _ !== "event");
     for (const item of intersection) {
       el.removeEventListener(item, el.$debounce);
     }

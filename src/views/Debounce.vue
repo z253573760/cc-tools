@@ -33,7 +33,11 @@
   </div>
 </template>
 <script>
+import { curry, throttle, flatten, debounce } from "../../packages";
 export default {
+  created() {
+    console.log({ curry, throttle, flatten, debounce });
+  },
   data() {
     return {
       text: "我是bar"
