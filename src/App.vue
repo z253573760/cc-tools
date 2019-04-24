@@ -1,13 +1,24 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">主页</router-link> |
-      <router-link to="/debounce">函数防抖</router-link>
+      <router-link v-for="item in routes" :key="item.path" :to="item.path">
+        {{ item.name }}
+      </router-link>
+
+      <!-- <router-link to="/">主页</router-link> |
+      <router-link to="/debounce">函数防抖</router-link> -->
     </div>
     <router-view />
   </div>
 </template>
-
+<script>
+import routes from "@/router/routes";
+export default {
+  data() {
+    return { routes };
+  }
+};
+</script>
 <style lang="scss" scoped>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
