@@ -1,9 +1,11 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import lib from "../lib/vue-tools.umd.min.js";
-console.log(lib);
+
 Vue.config.productionTip = false;
+import Vue from "vue";
+import Cc from "@zhoucanyu/cc-tools";
+Vue.use(Cc);
 
 new Vue({
   router,
