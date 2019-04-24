@@ -18,9 +18,15 @@ import Cc from "@zhoucanyu/cc-tools";
 Vue.use(Cc);
 ```
 
-### v-debounce 防抖指令
+1.tools 工具函数
+2.v-debounce 防抖指令
 
-######给事件添加防抖效果 #####参数 #####事件通过修饰符传参 没有默认值 目前解锁事件 click keydown input #####防抖的事件间隔 也是通过修饰符传参 默认值 300ms
+### v-debounce 防抖指令<br>
+
+给事件添加防抖效果<br>
+参数<br>
+事件通过修饰符传参 没有默认值 目前解锁事件 click keydown input<br>
+防抖的事件间隔 也是通过修饰符传参 默认值 300ms<br>
 
 v-debounce.click="bar"
 
