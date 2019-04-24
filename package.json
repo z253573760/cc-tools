@@ -1,6 +1,6 @@
 {
   "name": "@zhoucanyu/cc-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "main": "lib/vue-tools.umd.min.js",
   "description": "基于 Vue 自己封装的一些工具",
@@ -13,10 +13,11 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "node-sass": "^4.11.0",
     "path": "^0.12.7",
+    "sass-loader": "^7.1.0",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.3",
-    "vue-tools": "0.0.49"
+    "vue-router": "^3.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.6.0",
@@ -37,7 +38,9 @@
       "plugin:vue/essential",
       "@vue/prettier"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

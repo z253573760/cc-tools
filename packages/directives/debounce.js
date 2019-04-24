@@ -1,12 +1,7 @@
-const EVENT_NAMES = ["input", "keydown", "click"];
+import { debounce } from "../utils/tools";
 
-//函数防抖
-function debounce(func, delay = 300, I = null) {
-  return () => {
-    clearTimeout(I);
-    I = setTimeout((...args) => func(...args), delay);
-  };
-}
+//解锁的防抖事件
+const EVENT_NAMES = ["input", "keydown", "click"];
 
 // 处理传入的指令的修饰符
 function handlerModifiers(modifiers) {
