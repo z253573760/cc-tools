@@ -1,0 +1,55 @@
+{
+  "name": "@zhoucanyu/cc-tools",
+  "version": "0.1.1",
+  "private": false,
+  "main": "lib/vue-tools.umd.min.js",
+  "description": "基于 Vue 自己封装的一些工具",
+  "keyword": "vue-tools",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name vue-tools --dest lib packages/index.js"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "path": "^0.12.7",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vue-tools": "0.0.49"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.6.0",
+    "@vue/cli-plugin-eslint": "^3.6.0",
+    "@vue/cli-service": "^3.6.0",
+    "@vue/eslint-config-prettier": "^4.0.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/prettier"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

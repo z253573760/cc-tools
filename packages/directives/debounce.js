@@ -1,0 +1,64 @@
+const EVENT_NAMES = ["input", "keydown", "click"];
+
+//函数防抖
+function debounce(func, delay = 300, I = null) {
+  return () => {
+    clearTimeout(I);
+    I = setTimeout((...args) => func(...args), delay);
+  };
+}
+
+// 处理传入的指令的修饰符
+function handlerModifiers(modifiers) {
+  const keys = Object.keys(modifiers);
+  const time = keys.find(_ => !isNaN(Number(_)));
+  return time ? Number(time) : 300;
+}
+// 给el元素添加防抖函数事件
+function addEventListenerOfDebounce(eventName, el, func, time) {
+  let timer = null;
+  el.$debounce = event => {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => func(event), time);
+  };
+  el.addEventListener(eventName, el.$debounce);
+}
+// 2个数组取交集
+function getIntersection(arr1, arr2) {
+  return arr1.filter(v => arr2.includes(v));
+}
+// event 修饰符 处理
+function handlerEvent(el, value, intersection, time) {
+  for (const item of intersection) {
+    addEventListenerOfDebounce(item, el, value, time);
+  }
+}
+
+export default {
+  bind(el, { value, modifiers }) {
+    const time = handlerModifiers(modifiers);
+    const intersection = getIntersection(
+      EVENT_NAMES,
+      Object.keys(modifiers)
+    ).filter(_ => _ !== "event");
+
+    // 如果添加了event 修饰符 则传入event 对象
+    if (modifiers.event) {
+      handlerEvent(el, value, intersection, time);
+      return;
+    }
+    el.$debounce = debounce(value, time);
+    for (const item of intersection) {
+      el.addEventListener(item, el.$debounce);
+    }
+  },
+  destroy(el, { modifiers }) {
+    // 取交集 =>  得到eventNames 和 modifiers
+    const intersection = getIntersection(EVENT_NAMES, Object.keys(modifiers));
+    for (const item of intersection) {
+      el.removeEventListener(item, el.$debounce);
+    }
+  }
+};
