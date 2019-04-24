@@ -18,10 +18,13 @@ import Cc from "@zhoucanyu/cc-tools";
 Vue.use(Cc);
 ```
 
-1.tools 工具函数
-2.v-debounce 防抖指令
+### 目录
 
-### v-debounce 防抖指令<br>
+1.[tools](###tools)<br> 2.[v-debounce 防抖指令](###v-debounce防抖指令)
+
+### tools
+
+### v-debounce 防抖指令
 
 给事件添加防抖效果<br>
 参数<br>
