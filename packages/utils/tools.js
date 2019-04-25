@@ -62,3 +62,12 @@ export const curry = func => {
       : (...args) => g(...allArgs, ...args);
   return g;
 };
+
+export async function handlerPromise(func) {
+  try {
+    const data = await func();
+    return [data, null];
+  } catch (err) {
+    return [null, err.message];
+  }
+}

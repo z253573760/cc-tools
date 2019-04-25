@@ -12,6 +12,7 @@
     "lib": "vue-cli-service build --target lib --name vue-tools --dest lib packages/index.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "fs": "0.0.1-security",
     "node-sass": "^4.11.0",
@@ -31,7 +32,7 @@
     "vue-template-compiler": "^2.5.21"
   },
   "eslintConfig": {
-    "root": true,
+    "root": false,
     "env": {
       "node": true
     },

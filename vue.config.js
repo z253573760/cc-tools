@@ -22,4 +22,17 @@ module.exports = {
   //   return config;
   // }
   // }
+  devServer: {
+    //跨域
+    port: 8010, // 端口号
+    open: false, //配置自动启动浏览器
+    proxy: {
+      // 配置跨域处理 可以设置多个
+      "/api": {
+        //target: "http://localhost:7001",
+        target: "http://119.29.165.40:8010",
+        changeOrigin: true
+      }
+    }
+  }
 };

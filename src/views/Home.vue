@@ -6,13 +6,18 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from "./components/HelloWorld.vue";
-
+import { getIp } from "@/api/common";
+import Common from "@/api/common";
 export default {
-  name: "home"
-  // components: {
-  //   HelloWorld
-  // }
+  async created() {
+    //
+    const [data, err] = await getIp();
+    if (err) {
+      console.log("err", err);
+      // do somethings...
+      return;
+    }
+    console.log(data);
+  }
 };
 </script>
