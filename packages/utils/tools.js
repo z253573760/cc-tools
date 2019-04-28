@@ -71,3 +71,14 @@ export async function handlerPromise(func) {
     return [null, err.message];
   }
 }
+
+// 只执行一次
+export function once(func) {
+  let called = false;
+  return function() {
+    if (!called) {
+      called = true;
+      func.apply(this, arguments);
+    }
+  };
+}

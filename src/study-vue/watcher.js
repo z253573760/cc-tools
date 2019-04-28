@@ -16,7 +16,10 @@ export default class Watcher {
     }
   }
   get() {
+    Dep.target = this;
+    //此处简化。。要区分fuction还是expression
     const value = this.vm._data[this.expOrFn];
+    Dep.target = null;
     return value;
   }
 }

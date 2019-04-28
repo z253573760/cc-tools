@@ -1,4 +1,4 @@
-
+import Dep from "./dep";
 export default class Observe {
   constructor(value) {
     this.value = value;
@@ -12,18 +12,23 @@ export default class Observe {
   }
 }
 export function defineReactive(obj, key, val) {
-  const childOb = observe(val);
-  const dep = new Dep()
+  // const childOb = observe(val);
+  const dep = new Dep();
   Object.defineProperty(obj, key, {
     enumerable: true,
     configurable: true,
-    get: () => val,
-    set: newVal => {
-      let value = val
-      if(newVal = value) return 
-      val = newVal
-      childOb = observe(newVal); //如果新赋值的值是个复杂类型。再递归它，加上set/get。。
-      dep.notify()
+    get() {
+      if (Dep.target) {
+        dep.addSub(Dep.target);
+      }
+      return val;
+    },
+    set(newVal) {
+      let value = val;
+      if (newVal === value) return;
+      val = newVal;
+      // childOb = observe(newVal); //如果新赋值的值是个复杂类型。再递归它，加上set/get。。
+      dep.notify(newVal, val);
     }
   });
 }
@@ -33,11 +38,4 @@ export function observe(value, vm) {
     return;
   }
   return new Observer(value);
-}
-
-export function observe(value, vm) {
-  if (!value || typeof value !== 'object') {
-    return
-  }
-  return new Observer(value)
 }

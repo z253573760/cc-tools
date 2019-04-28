@@ -6,11 +6,15 @@
 </template>
 <script>
 import { text } from "@/assets/text.json";
+import test from "@/study-vue/test";
 export default {
   data() {
     return {
       text: text
     };
+  },
+  created() {
+    test();
   },
   methods: {
     bar() {

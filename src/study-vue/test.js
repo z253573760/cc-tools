@@ -1,22 +1,16 @@
-function defineReactive(obj, key) {
-  let val = obj[key];
-  Object.defineProperty(obj, key, {
-    get() {
-      console.log(" === 收集依赖 === ");
-      console.log(" 当前值为：" + val);
-      return val;
-    },
-    set(newValue) {
-      console.log(" === 通知变更 === ");
-      console.log(" 当前值为：" + newValue);
-      val = newValue;
-    }
-  });
-}
-const student = {
-  name: "灿灿"
+import { defineReactive } from "./observe";
+import Dep from "./dep";
+export default () => {
+  const object = {};
+  defineReactive(object, "name", "灿灿");
+  Dep.target = function(newValue, oldValue) {
+    console.log("我被添加进去了，新的值是：" + newValue);
+  };
+  object.name;
+  object.name = "灿灿2";
+  Dep.target = function(newValue, oldValue) {
+    console.log("添加第二个函数，新的值是：" + newValue);
+  };
+  object.name;
+  object.name = "灿灿3";
 };
-
-defineReactive(student, "name");
-
-console.log(student.name);

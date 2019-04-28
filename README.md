@@ -1,8 +1,8 @@
-# vue-tools
+# cc-tools
 
 #### 个人工具
 
-[github](https://github.com/z253573760/vue-tools)
+[github](https://github.com/z253573760/cc-tools)
 
 ### 下载
 

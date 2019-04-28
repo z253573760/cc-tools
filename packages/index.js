@@ -1,6 +1,5 @@
-import debounce from "./directives/debounce";
-import visibility from "./directives/visibility";
-import textHide from "./directives/text-hide";
+import directiveInit from "./directives";
+import { dateFormate } from "./utils/tools";
 export {
   handlerPromise,
   dateFormate,
@@ -9,13 +8,20 @@ export {
   flatten,
   debounce
 } from "./utils/tools";
-import { dateFormate } from "./utils/tools";
+
+export {
+  isUndef,
+  isDef,
+  isTrue,
+  isFalse,
+  isPrimitive,
+  isObject,
+  isPromise
+} from "./utils/type";
 
 export default {
   install(Vue) {
-    Vue.directive("debounce", debounce);
-    Vue.directive("visibility", visibility);
-    Vue.directive("text-hide", textHide);
+    directiveInit(Vue);
     Vue.filter("dateFormate", dateFormate);
   }
 };
