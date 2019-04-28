@@ -13,5 +13,10 @@ export default [
     path: "/text-hide",
     name: "文本隐藏",
     component: () => import("@/views/TextHide.vue")
+  },
+  {
+    path: "/tree-menu",
+    name: "树形导航",
+    component: () => import("@/views/TreeMenus.vue")
   }
 ];

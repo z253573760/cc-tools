@@ -1,3 +1,5 @@
+import { isFunc } from "./type";
+import { warn } from "./log";
 // 日期格式化
 export const dateFormate = (
   _date = new Date(),
@@ -81,4 +83,42 @@ export function once(func) {
       func.apply(this, arguments);
     }
   };
+}
+
+// 横竖屏切换的回调钩子
+export function orientate(func1, func2) {
+  if (!isFunc(func1) || !isFunc(func2)) {
+    warn("orientate函数 接受2个回调函数 你传的参数不符合函数类型");
+  }
+  window.addEventListener(
+    "onorientationchange" in window ? "orientationchange" : "resize",
+    () => {
+      if (window.orientation === 180 || window.orientation === 0) {
+        // "竖屏状态！
+        func1();
+        return;
+      }
+      if (window.orientation === 90 || window.orientation === -90) {
+        // "横屏状态！
+        func2();
+        return;
+      }
+    },
+    false
+  );
+}
+
+// 判断是否在移动端
+export function isMobile() {
+  return /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+}
+
+// 判断是否竖屏
+export function isMatches() {
+  const mql = window.matchMedia("(orientation: portrait)");
+  return !mql.matches;
+}
+
+export function getScrollTop() {
+  return document.documentElement.scrollTop || document.body.scrollTop;
 }

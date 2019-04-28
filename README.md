@@ -21,7 +21,8 @@ Vue.use(Cc);
 ### 目录
 
 > 1. [tools 工具函数](###tools工具函数)<br>
-> 2. [v-debounce 防抖指令](###v-debounce防抖指令)
+> 2. [v-debounce 防抖指令](###v-debounce防抖指令)<br>
+> 3. [移动端横屏提示](###移动端横屏提示)
 
 ### tools 工具函数
 
@@ -75,4 +76,12 @@ v-debounce.click.event="bar"
 
 ```
 <div v-debounce.click="() => bar(1)">按钮</div>
+```
+
+### 移动端横屏提示
+
+use 的时候传入 media 值（boolean） 默认 false 不开启
+
+```
+Vue.use(Cc, { media: true });
 ```

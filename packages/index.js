@@ -1,4 +1,5 @@
 import directiveInit from "./directives";
+import mediaInit from "./plugins/match-media";
 import { dateFormate } from "./utils/tools";
 export {
   handlerPromise,
@@ -19,9 +20,18 @@ export {
   isPromise
 } from "./utils/type";
 
+export const TreeMenu = () => import("./components/tree-menu.vue");
+
+const defaultOpts = {
+  media: false
+};
 export default {
-  install(Vue) {
+  install(Vue, $options = {}) {
     directiveInit(Vue);
+    const opts = { ...defaultOpts, ...$options };
+    if (opts.media) {
+      mediaInit(Vue);
+    }
     Vue.filter("dateFormate", dateFormate);
   }
 };

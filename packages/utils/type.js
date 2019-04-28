@@ -16,6 +16,10 @@ export function isFalse(v) {
   return v === false;
 }
 
+// 判断是否是函数
+export function isFunc(v) {
+  return typeof v === "function";
+}
 //是否为原始类型，typeof 返回
 export function isPrimitive(v) {
   return (
