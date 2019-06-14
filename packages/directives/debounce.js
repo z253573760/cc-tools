@@ -49,7 +49,7 @@ export default {
       el.addEventListener(item, el.$debounce);
     }
   },
-  destroy(el, { modifiers }) {
+  unbind(el, { modifiers }) {
     // 取交集 =>  得到eventNames 和 modifiers
     const intersection = getIntersection(
       EVENT_NAMES,

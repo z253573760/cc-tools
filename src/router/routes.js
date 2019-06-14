@@ -18,5 +18,10 @@ export default [
     path: "/tree-menu",
     name: "树形导航",
     component: () => import("@/views/TreeMenus.vue")
+  },
+  {
+    path: "/time",
+    name: "时间指令",
+    component: () => import("@/views/Time.vue")
   }
 ];
