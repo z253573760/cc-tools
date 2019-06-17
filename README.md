@@ -61,7 +61,7 @@ v-debounce.click="bar"
 ```
 // 添加一个点击事件
 <div v-debounce.click="bar">按钮</div> //默认300ms的延迟
-<div v-debounce.click.1000="bar">按钮</div> // 1000ms的延迟
+<div v-debounce:1000.click="bar">按钮</div> // 1000ms的延迟
 ```
 
 如果要获取 event 对象可以添加 event 修饰符

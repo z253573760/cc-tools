@@ -18,7 +18,7 @@
         <input
           type="text"
           :value="text"
-          v-debounce.input.event="eventOfInput"
+          v-debounce:400.input.event="eventOfInput"
         />
       </p>
       <p>

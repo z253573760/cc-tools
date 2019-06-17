@@ -4,11 +4,7 @@ import { debounce } from "../utils/tools";
 const EVENT_NAMES = ["input", "keydown", "click"];
 
 // 处理传入的指令的修饰符
-function handlerModifiers(modifiers) {
-  const keys = Object.keys(modifiers);
-  const time = keys.find(_ => !isNaN(Number(_)));
-  return time ? Number(time) : 300;
-}
+
 // 给el元素添加防抖函数事件
 function addEventListenerOfDebounce(eventName, el, func, time) {
   let timer = null;
@@ -32,8 +28,8 @@ function handlerEvent(el, value, intersection, time) {
 }
 
 export default {
-  bind(el, { value, modifiers }) {
-    const time = handlerModifiers(modifiers);
+  bind(el, { value, modifiers, arg }) {
+    const time = arg || 300;
     const intersection = getIntersection(
       EVENT_NAMES,
       Object.keys(modifiers)
