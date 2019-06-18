@@ -44,9 +44,11 @@ function timestampFormat(timestamp) {
     // 一小时前之内
     return Math.floor(timestampDiff / 60) + "分钟前";
   } else if (
-    curDate.getFullYear() == Y &&
-    curDate.getMonth() + 1 == m &&
-    curDate.getDate() == d
+    // curDate.getFullYear() == Y &&
+    // curDate.getMonth() + 1 == m &&
+    // curDate.getDate() == d
+    timestampDiff <
+    60 * 60 * 24
   ) {
     return Math.floor(timestampDiff / (60 * 60)) + "小时前";
     // return '今天' + zeroize(H) + ':' + zeroize(i)
@@ -58,6 +60,7 @@ function timestampFormat(timestamp) {
       newDate.getDate() == d
     ) {
       //return '昨天' + zeroize(H) + ':' + zeroize(i)
+      console.log(timestampDiff, 60 * 60 * 24);
       return "一天前";
     } else if (curDate.getFullYear() == Y) {
       return (
