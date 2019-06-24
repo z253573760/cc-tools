@@ -68,15 +68,11 @@ function timestampFormat(timestamp) {
       );
     } else {
       return (
-        Y +
-        "年" +
-        zeroize(m) +
-        "月" +
-        zeroize(d) +
-        "日 " +
-        zeroize(H) +
-        ":" +
-        zeroize(i)
+        Y + "-" + zeroize(m) + "-" + zeroize(d)
+        // + "- "
+        // zeroize(H) +
+        // ":" +
+        // zeroize(i)
       );
     }
   }
