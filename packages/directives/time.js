@@ -16,6 +16,21 @@ export default {
       }, 1000 * 60 * 5);
     }
   },
+  update(el, { value }) {
+    const result = timestampFormat(value);
+    const isInterval =
+      result === "刚刚" ||
+      result.indexOf("小时前") !== -1 ||
+      result.indexOf("分钟前") !== -1;
+    el.innerText = result;
+    if (isInterval) {
+      //判断是否使用定时器进行更新
+      timer = setInterval(() => {
+        const result = timestampFormat(value);
+        el.innerText = result;
+      }, 1000 * 60 * 5);
+    }
+  },
   unbind() {
     clearInterval(timer);
   }
@@ -55,9 +70,11 @@ function timestampFormat(timestamp) {
   } else {
     let newDate = new Date((curTimestamp - 86400) * 1000); // 参数中的时间戳加一天转换成的日期对象
     if (
-      newDate.getFullYear() == Y &&
-      newDate.getMonth() + 1 == m &&
-      newDate.getDate() == d
+      // newDate.getFullYear() == Y &&
+      // newDate.getMonth() + 1 == m &&
+      // newDate.getDate() == d
+      60 * 60 * 24 < timestampDiff &&
+      timestampDiff < 60 * 60 * 24 * 2
     ) {
       //return '昨天' + zeroize(H) + ':' + zeroize(i)
       console.log(timestampDiff, 60 * 60 * 24);
