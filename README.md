@@ -102,7 +102,7 @@ Vue.use(Cc, { media: true });
       :before-upload="beforeUpload"
       :ossOpts="ossOpts"
       :before-remove="onRemove"
-      :on-preview="onRemove"
+      :on-preview="onPreview"
       :list="list"
     />
   </div>
