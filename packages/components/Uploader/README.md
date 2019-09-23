@@ -8,7 +8,7 @@
 <template>
   <div class="warpper">
     <Uploader
-      size="5"
+      size="size"
       :before-upload="beforeUpload"
       :ossOpts="ossOpts"
       :before-remove="onRemove"
@@ -33,6 +33,7 @@ export default {
   components: { Uploader },
   data() {
     return {
+			size:5,
       ossOpts,
       list: [
        'http://jiangniu-dev.oss-cn-shenzhen.aliyuncs.com/uploads/business_plan/20190923/7c86154c-3e3c-4c09-aee5-af49770bfec7
@@ -57,6 +58,12 @@ export default {
 ```
 
 ```
+size Number 默认6
+上传图片的个数 超过限制会自动隐藏 上传组件
+
+ossOpts
+阿里OSS上传的参数 具体移步阿里oss文档
+
 before-upload	function(url)
 上传文件之前的钩子，参数为上传的文件，若返回 false 或者返回 Promise 且被 reject，则停止上传。
 

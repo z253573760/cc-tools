@@ -78,8 +78,6 @@ v-debounce.click.event="bar"
 <div v-debounce.click="() => bar(1)">按钮</div>
 ```
 
-### ali-oss 图片上传组件
-
 ### 移动端横屏提示
 
 use 的时候传入 media 值（boolean） 默认 false 不开启
