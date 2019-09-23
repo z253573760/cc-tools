@@ -22,7 +22,7 @@ Vue.use(Cc);
 
 > 1. [tools 工具函数](###tools工具函数)<br>
 > 2. [v-debounce 防抖指令](###v-debounce防抖指令)<br>
-> 3. [移动端横屏提示](###移动端横屏提示)
+> 3. [ali-oss Upload 组件](https://github.com/z253573760/cc-tools/tree/master/packages/components/Uploader)
 
 ### tools 工具函数
 
