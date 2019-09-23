@@ -92,8 +92,7 @@ Vue.use(Cc, { media: true });
 
 实际效果
 
-![image](https://github.com/z253573760/cc-tools/blob/master/src/assets/load/gifhome_320x326_25s.gif?raw=true)
-使用方式
+![image](https://github.com/z253573760/cc-tools/blob/master/src/assets/load/gifhome_640x653_25s?raw=true)
 
 ```
 <template>
