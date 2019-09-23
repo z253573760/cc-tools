@@ -78,10 +78,78 @@ v-debounce.click.event="bar"
 <div v-debounce.click="() => bar(1)">按钮</div>
 ```
 
+### ali-oss 图片上传组件
+
 ### 移动端横屏提示
 
 use 的时候传入 media 值（boolean） 默认 false 不开启
 
 ```
 Vue.use(Cc, { media: true });
+```
+
+### ali-oss 图片上传组件 基于 vue
+
+使用方式
+
+```
+<template>
+  <div class="warpper">
+    <Uploader
+      :before-upload="beforeUpload"
+      :ossOpts="ossOpts"
+      :before-remove="onRemove"
+      :on-preview="onRemove"
+      :list="list"
+    />
+  </div>
+</template>
+<script>
+import { Uploader } from "@zhoucanyu/cc-tools";
+const ossOpts = {
+  app_id: "xxxxx",
+  bucket: "xxxxx",
+  dir: "xxx/xxx/xxx/",
+  expire: 1569207251,
+  policy: "xxxxxxxxxxxx",
+  region: "oss-cn-xxxx",
+  showurl: "xxxxxx",
+  signature: "xxxxx"
+};
+export default {
+  components: { Uploader },
+  data() {
+    return {
+      ossOpts,
+      list: [
+       'http://jiangniu-dev.oss-cn-shenzhen.aliyuncs.com/uploads/business_plan/20190923/7c86154c-3e3c-4c09-aee5-af49770bfec7
+      ]
+    };
+  },
+  methods: {
+    onPreview(url, index) {
+      console.log("外部组件调用 on-preview", url, index);
+    },
+    onRemove(url, index) {
+      console.log("外部组件调用 before-remove", url, index);
+      return true;
+    },
+    beforeUpload(url) {
+      console.log("外部组件调用 before-uploader", url);
+      return file;
+    }
+  }
+};
+</script>
+```
+
+```
+before-upload	function(url)
+上传文件之前的钩子，参数为上传的文件，若返回 false 或者返回 Promise 且被 reject，则停止上传。
+
+before-remove   function(url, index)
+删除文件之前的钩子，参数为上传的文件和文件列表，若返回 false 或者返回 Promise 且被 reject，则停止上传。
+
+on-preview      function(url)
+预览图片的钩子
 ```

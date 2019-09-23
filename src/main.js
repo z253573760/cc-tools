@@ -3,7 +3,7 @@ import VConsole from "vconsole";
 import App from "./App.vue";
 import router from "./router";
 import Cc from "../packages";
-Vue.use(Cc, { media: true });
+Vue.use(Cc);
 Vue.config.productionTip = false;
 new VConsole();
 new Vue({

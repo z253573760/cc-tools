@@ -23,5 +23,10 @@ export default [
     path: "/time",
     name: "时间指令",
     component: () => import("@/views/Time.vue")
+  },
+  {
+    path: "/uploader",
+    name: "图片上传",
+    component: () => import("@/views/uploader.vue")
   }
 ];

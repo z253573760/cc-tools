@@ -1,3 +1,4 @@
+import "element-ui/lib/theme-chalk/index.css";
 import directiveInit from "./directives";
 import mediaInit from "./plugins/match-media";
 import { dateFormate } from "./utils/tools";
@@ -20,8 +21,10 @@ export {
   isPromise
 } from "./utils/type";
 
-export const TreeMenu = () => import("./components/tree-menu.vue");
+export { fileToBase64 } from "./utils/img";
 
+export const TreeMenu = () => import("./components/tree-menu.vue");
+export const Uploader = () => import("./components/Uploader");
 const defaultOpts = {
   media: false
 };

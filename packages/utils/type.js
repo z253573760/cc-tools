@@ -43,3 +43,14 @@ export function isPromise(val) {
     typeof val.catch === "function"
   );
 }
+
+//判断是否属于 file 对象
+export function isFile(file) {
+  const fileType = Object.prototype.toString.call(file);
+  return fileType === "[object File]";
+}
+// 判断是否属于Blob 对象
+export function isBlod(blod) {
+  const type = Object.prototype.toString.call(blod);
+  return type === "[object Blod]";
+}

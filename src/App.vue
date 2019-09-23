@@ -8,7 +8,9 @@
       <!-- <router-link to="/">主页</router-link> |
       <router-link to="/debounce">函数防抖</router-link> -->
     </div>
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 <script>

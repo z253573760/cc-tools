@@ -42,7 +42,6 @@ function zeroize(num) {
 function timestampFormat(timestamp) {
   let curTimestamp = parseInt(new Date().getTime() / 1000); //当前时间戳
   let timestampDiff = curTimestamp - timestamp; // 参数时间戳与当前时间戳相差秒数
-
   let curDate = new Date(curTimestamp * 1000); // 当前时间日期对象
   let tmDate = new Date(timestamp * 1000); // 参数时间戳转换成的日期对象
 
@@ -68,7 +67,7 @@ function timestampFormat(timestamp) {
     return Math.floor(timestampDiff / (60 * 60)) + "小时前";
     // return '今天' + zeroize(H) + ':' + zeroize(i)
   } else {
-    let newDate = new Date((curTimestamp - 86400) * 1000); // 参数中的时间戳加一天转换成的日期对象
+    // let newDate = new Date((curTimestamp - 86400) * 1000); // 参数中的时间戳加一天转换成的日期对象
     if (
       // newDate.getFullYear() == Y &&
       // newDate.getMonth() + 1 == m &&
@@ -77,7 +76,6 @@ function timestampFormat(timestamp) {
       timestampDiff < 60 * 60 * 24 * 2
     ) {
       //return '昨天' + zeroize(H) + ':' + zeroize(i)
-      console.log(timestampDiff, 60 * 60 * 24);
       return "一天前";
     } else if (curDate.getFullYear() == Y) {
       return (
