@@ -90,12 +90,15 @@ Vue.use(Cc, { media: true });
 
 ### ali-oss 图片上传组件 基于 vue
 
+效果
+![image](https://github.com/z253573760/vue-blog/blob/master/src/assets/load/gifhome_320x326_25s.gif?raw=true)
 使用方式
 
 ```
 <template>
   <div class="warpper">
     <Uploader
+      size="5"
       :before-upload="beforeUpload"
       :ossOpts="ossOpts"
       :before-remove="onRemove"
