@@ -1,6 +1,8 @@
 <template>
   <div class="warpper">
     <Uploader
+      text="上传图片"
+      :limit="limit"
       :before-upload="beforeUpload"
       :ossOpts="ossOpts"
       :before-remove="remove"
@@ -8,7 +10,7 @@
       :on-error="onError"
       :on-success="onSuccess"
       :list="list"
-      width="120"
+      width="100"
     />
   </div>
 </template>
@@ -29,6 +31,7 @@ export default {
   components: { Uploader },
   data() {
     return {
+      limit: 6,
       ossOpts,
       list: [
         "http://jiangniu-dev.oss-cn-shenzhen.aliyuncs.com/uploads/business_plan/20190923/7c86154c-3e3c-4c09-aee5-af49770bfec7",

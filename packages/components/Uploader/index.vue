@@ -20,6 +20,7 @@
               />
               <div class="cc-upload">
                 <div class="add-icon">+</div>
+                <div v-if="text" style="font-size:12px" v-text="text"></div>
               </div>
             </div>
           </div>
@@ -64,6 +65,10 @@ export default {
     Progress
   },
   props: {
+    text: {
+      type: String,
+      default: ""
+    },
     width: {
       type: [Number, String],
       default: 100
@@ -229,6 +234,7 @@ export default {
       width: 100%;
       height: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
