@@ -183,7 +183,7 @@ export default {
         this.ossOpts,
         progressEvent => {
           const complete =
-            ((progressEvent.loaded / progressEvent.total) * 85) | 0;
+            ((progressEvent.loaded / progressEvent.total) * 60) | 0;
           this.fileList[this.fileList.length - 1].percentage = complete;
         }
       );
@@ -194,7 +194,16 @@ export default {
         }, 2000);
         return;
       }
+      const timer = setInterval(() => {
+        if (this.fileList[this.fileList.length - 1].percentage >= 95) {
+          clearInterval(timer);
+          return;
+        }
+        this.fileList[this.fileList.length - 1].percentage =
+          this.fileList[this.fileList.length - 1].percentage + 1;
+      }, 500);
       preLoadImg(result.url, () => {
+        clearInterval(timer);
         this.fileList[this.fileList.length - 1].url = result.url;
         this.fileList[this.fileList.length - 1].percentage = 100;
         this.onSuccess(result.url, fileBeforeUpload);

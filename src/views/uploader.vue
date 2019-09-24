@@ -17,7 +17,7 @@
 <script>
 import { Uploader } from "../../packages";
 const ossOpts = {
-  app_id: "LTAI69b3DYhC7vXXX",
+  app_id: "LTAI69b3DYhC7vDFZCY",
   bucket: "jiangniu-dev",
   dir: "uploads/business_plan/20190924/",
   expire: 1569207251,
