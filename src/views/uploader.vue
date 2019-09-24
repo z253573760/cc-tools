@@ -16,9 +16,8 @@
 </template>
 <script>
 import { CcUploader } from "../../packages";
-
 const ossOpts = {
-  app_id: "LTAI69b3DYhC7vDF",
+  app_id: "LTAI69b3DYhC7vDFXXX",
   bucket: "jiangniu-dev",
   dir: "uploads/business_plan/20190924/",
   expire: 1569207251,
