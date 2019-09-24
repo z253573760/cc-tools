@@ -88,29 +88,6 @@ export default {
 
 #### 参数说明
 
-```
-width [Number,String] 默认100
-宽高
-
-limit Number 默认6
-上传图片的个数 超过限制会自动隐藏 上传组件
-
-ossOpts
-阿里OSS上传的参数 具体移步阿里oss文档
-
-before-upload	function(file)
-上传文件之前的钩子，参数为上传的文件，若返回 false 或者返回 Promise 且被 reject，则停止上传。
-
-before-remove   function(url, index)
-删除文件之前的钩子，参数为上传的文件和文件列表，若返回 false 或者返回 Promise 且被 reject，则停止上传。
-
-on-preview      function(url)
-预览图片的钩子
-
-on-error function(err, file)
-文件上传失败时的钩子
-```
-
 | 属性          | 说明                                                                                                    | 类型                 | 默认值     |
 | ------------- | ------------------------------------------------------------------------------------------------------- | -------------------- | ---------- |
 | text          | 文本提示                                                                                                | String               |            |
