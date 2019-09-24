@@ -8,6 +8,7 @@
 <template>
   <div class="warpper">
     <Uploader
+		  width="120"
       :limit="limit"
       :before-upload="beforeUpload"
       :ossOpts="ossOpts"
@@ -62,6 +63,9 @@ export default {
 ```
 
 ```
+width [Number,String] 默认100
+宽高
+
 limit Number 默认6
 上传图片的个数 超过限制会自动隐藏 上传组件
 
