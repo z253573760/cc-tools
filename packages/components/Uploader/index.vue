@@ -137,7 +137,7 @@ export default {
     },
     preview(index) {
       const result = this.fileList[index];
-      this.onPreview({ ...result });
+      this.onPreview({ ...result }, index);
     },
     async handlerBeforeUpload(file) {
       try {
