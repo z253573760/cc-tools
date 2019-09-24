@@ -96,6 +96,10 @@ export default {
       type: Function,
       default: () => {}
     },
+    onSuccess: {
+      type: Function,
+      default: () => {}
+    },
     onError: {
       type: Function,
       default: () => {}
@@ -188,6 +192,7 @@ export default {
       preLoadImg(result.url, () => {
         this.fileList[this.fileList.length - 1].url = result.url;
         this.fileList[this.fileList.length - 1].percentage = 100;
+        this.onSuccess(result.url, fileBeforeUpload);
       });
     }
   }

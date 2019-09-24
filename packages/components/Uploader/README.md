@@ -8,13 +8,14 @@
 <template>
   <div class="warpper">
     <Uploader
-		  width="120"
+       width="120"
       :limit="limit"
       :before-upload="beforeUpload"
       :ossOpts="ossOpts"
       :before-remove="onRemove"
       :on-preview="onPreview"
-			:on-error="onError"
+      :on-error="onError"
+      :on-success="onSuccess"
       :list="list"
     />
   </div>
@@ -35,7 +36,7 @@ export default {
   components: { Uploader },
   data() {
     return {
-			limit:5,
+      limit:5,
       ossOpts,
       list: [
        'http://jiangniu-dev.oss-cn-shenzhen.aliyuncs.com/uploads/business_plan/20190923/7c86154c-3e3c-4c09-aee5-af49770bfec7
@@ -54,9 +55,12 @@ export default {
       console.log("外部组件调用 before-uploader", url);
       return file;
     },
-		onError(err,file){
-			 console.log("外部组件调用 on-error", err, file);
-		}
+    onError(err,file){
+      console.log("外部组件调用 on-error", err, file);
+    },
+    onSuccess(url, file) {
+      console.log("外部组件调用 onSuccess", url, file);
+    }
   }
 };
 </script>
@@ -81,6 +85,9 @@ before-remove   function(url, index)
 on-preview      function(url)
 预览图片的钩子
 
-on-error function(err,file)
+on-error function(err, file)
 文件上传失败时的钩子
+
+onSuccess funtion(err ,file)
+文件上传成功时的钩子
 ```

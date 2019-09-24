@@ -6,6 +6,7 @@
       :before-remove="remove"
       :on-preview="preview"
       :on-error="onError"
+      :on-success="onSuccess"
       :list="list"
       width="120"
     />
@@ -14,14 +15,15 @@
 <script>
 import { Uploader } from "../../packages";
 const ossOpts = {
-  app_id: "xxxxx",
-  bucket: "xxxxx",
-  dir: "xxx/xxx/xxx/",
+  app_id: "LTAI69b3DYhC7vXXX",
+  bucket: "jiangniu-dev",
+  dir: "uploads/business_plan/20190924/",
   expire: 1569207251,
-  policy: "xxxxxxxxxxxx",
-  region: "oss-cn-xxxx",
-  showurl: "xxxxxx",
-  signature: "xxxxx"
+  policy:
+    "eyJleHBpcmF0aW9uIjoiMjAxOS0wOS0yNFQxMDowMDo1MloiLCJjb25kaXRpb25zIjpbWyJjb250ZW50LWxlbmd0aC1yYW5nZSIsMCwxMDQ4NTc2MDAwXSxbInN0YXJ0cy13aXRoIiwiJGtleSIsInVwbG9hZHNcL2J1c2luZXNzX3BsYW5cLzIwMTkwOTI0XC8iXV19",
+  region: "oss-cn-shenzhen",
+  showurl: "http://jiangniu-dev.oss-cn-shenzhen.aliyuncs.com",
+  signature: "Tc9wLBk+konkktBlA7EHqLExS5A="
 };
 export default {
   components: { Uploader },
@@ -52,6 +54,9 @@ export default {
       if (err) {
         console.log("外部组件调用 onError", err, file);
       }
+    },
+    onSuccess(url, file) {
+      console.log("外部组件调用 onSuccess", url, file);
     }
   }
 };
