@@ -22,4 +22,4 @@ Vue.use(Cc);
 
 > 1. [tools 工具函数](https://github.com/z253573760/cc-tools/tree/master/packages/utils)<br>
 > 2. [v-debounce 防抖指令](https://github.com/z253573760/cc-tools/tree/master/packages/directives)<br>
-> 3. [ali-oss Upload 组件](https://github.com/z253573760/cc-tools/tree/master/packages/components/Uploader)<br>
+> 3. [ali-oss Upload 组件](https://github.com/z253573760/cc-tools/tree/master/packages/components/uploader)<br>
