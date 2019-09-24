@@ -88,14 +88,14 @@ export default {
 
 #### 参数说明
 
-| 属性          | 说明                                                                                                    | 类型                 | 默认值     |
-| ------------- | ------------------------------------------------------------------------------------------------------- | -------------------- | ---------- |
-| text          | 文本提示                                                                                                | String               |            |
-| width         | 宽高                                                                                                    | Number,String        | 100        |
-| limit         | 最大允许上传个数                                                                                        | Number               | 6          |
-| ossOpts       | 阿里 OSS 上传的参数 具体移步阿里 oss 文档                                                               | Object               | 无（必填） |
-| before-upload | 上传文件之前的钩子，参数为上传的文件，若返回 false 或者返回 Promise 且被 reject，则停止上传。           | function(file)       |            |
-| before-remove | 删除文件之前的钩子，参数为上传的文件和文件列表，若返回 false 或者返回 Promise 且被 reject，则停止上传。 | function(url, index) |            |
-| on-preview    | 预览图片的钩子                                                                                          | function(url)        |            |
-| on-error      | 文件上传失败时的钩子                                                                                    | function(err,file)   |            |
-| on-success    | 文件上传成功时的钩子                                                                                    | function(url,file)   |            |
+| 属性          | 说明                                                                                                    | 类型                 | 默认值 |
+| ------------- | ------------------------------------------------------------------------------------------------------- | -------------------- | ------ |
+| text          | 文本提示                                                                                                | String               |        |
+| width         | 宽高                                                                                                    | Number,String        | 100    |
+| limit         | 最大允许上传个数                                                                                        | Number               | 6      |
+| ossOpts       | 阿里 OSS 上传的参数 具体移步阿里 oss 文档                                                               | Object               | 必填   |
+| before-upload | 上传文件之前的钩子，参数为上传的文件，若返回 false 或者返回 Promise 且被 reject，则停止上传。           | function(file)       |        |
+| before-remove | 删除文件之前的钩子，参数为上传的文件和文件列表，若返回 false 或者返回 Promise 且被 reject，则停止上传。 | function(url, index) |        |
+| on-preview    | 预览图片的钩子                                                                                          | function(url)        |        |
+| on-error      | 文件上传失败时的钩子                                                                                    | function(err,file)   |        |
+| on-success    | 文件上传成功时的钩子                                                                                    | function(url,file)   |        |
