@@ -55,9 +55,9 @@
 </template>
 <script>
 import { Progress } from "element-ui";
-import { compressedImg, preLoadImg } from "../../../utils/img";
+import { preLoadImg } from "../../../utils/img";
 import { generateUUID } from "../../../utils/tools";
-import { isFile, isBlod } from "../../../utils/type";
+import { isFile } from "../../../utils/type";
 import { warn } from "../../../utils/log";
 import { ossUpload } from "../../../utils/aliOss";
 
@@ -215,7 +215,13 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../../assets/css/rest.css";
+* {
+  box-sizing: border-box;
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+}
 .cc-uploader-warpper {
   display: flex;
   flex-wrap: nowrap;
