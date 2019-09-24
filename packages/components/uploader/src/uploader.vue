@@ -54,13 +54,15 @@
   </div>
 </template>
 <script>
-import { compressedImg, preLoadImg } from "../../utils/img";
-import { generateUUID } from "../../utils/tools";
-import { isFile, isBlod } from "../../utils/type";
-import { warn } from "../../utils/log";
-import { ossUpload } from "../../utils/aliOss";
 import { Progress } from "element-ui";
+import { compressedImg, preLoadImg } from "../../../utils/img";
+import { generateUUID } from "../../../utils/tools";
+import { isFile, isBlod } from "../../../utils/type";
+import { warn } from "../../../utils/log";
+import { ossUpload } from "../../../utils/aliOss";
+
 export default {
+  name: "CcUploader",
   components: {
     Progress
   },
@@ -213,7 +215,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../assets/css/rest.css";
+@import "../../../assets/css/rest.css";
 .cc-uploader-warpper {
   display: flex;
   flex-wrap: nowrap;

@@ -1,6 +1,6 @@
 <template>
   <div class="warpper">
-    <Uploader
+    <cc-uploader
       text="上传图片"
       :limit="limit"
       :before-upload="beforeUpload"
@@ -15,9 +15,10 @@
   </div>
 </template>
 <script>
-import { Uploader } from "../../packages";
+import { CcUploader } from "../../packages";
+
 const ossOpts = {
-  app_id: "LTAI69b3DYhC7vDFZCY",
+  app_id: "LTAI69b3DYhC7vDF",
   bucket: "jiangniu-dev",
   dir: "uploads/business_plan/20190924/",
   expire: 1569207251,
@@ -28,7 +29,7 @@ const ossOpts = {
   signature: "Tc9wLBk+konkktBlA7EHqLExS5A="
 };
 export default {
-  components: { Uploader },
+  components: { CcUploader },
   data() {
     return {
       limit: 6,

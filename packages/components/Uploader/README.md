@@ -4,15 +4,35 @@
 
 ![image](https://github.com/z253573760/cc-tools/blob/master/src/assets/load/gifhome_480x490_25s.gif?raw=true)
 
+#### 全局注册
+
+```
+方式一：
+
+import { CcUploader } from "@zhoucanyu/cc-tools";
+Vue.use( CcUploader )
+
+```
+
+```
+方式二：
+
+import { CcUploader } from "@zhoucanyu/cc-tools";
+Vue.component("cc-uploader", CcUploader )
+
+```
+
+#### 组件内使用
+
 ```
 <template>
   <div class="warpper">
     <Uploader
        width="120"
+      :ossOpts="ossOpts"
       :limit="limit"
       :before-upload="beforeUpload"
-      :ossOpts="ossOpts"
-      :before-remove="onRemove"
+      :before-remove="beforeRemove"
       :on-preview="onPreview"
       :on-error="onError"
       :on-success="onSuccess"
@@ -21,7 +41,7 @@
   </div>
 </template>
 <script>
-import { Uploader } from "@zhoucanyu/cc-tools";
+import { CcUploader } from "@zhoucanyu/cc-tools";
 const ossOpts = {
   app_id: "xxxxx",
   bucket: "xxxxx",
@@ -47,7 +67,7 @@ export default {
     onPreview(url, index) {
       console.log("外部组件调用 on-preview", url, index);
     },
-    onRemove(url, index) {
+    beforeRemove(url, index) {
       console.log("外部组件调用 before-remove", url, index);
       return true;
     },
@@ -58,13 +78,15 @@ export default {
     onError(err,file){
       console.log("外部组件调用 on-error", err, file);
     },
-    onSuccess(url, file) {
-      console.log("外部组件调用 onSuccess", url, file);
+    onSuccess(url,file){
+      console.log("外部组件调用 on-success", url, file);
     }
   }
 };
 </script>
 ```
+
+#### 参数说明
 
 ```
 width [Number,String] 默认100
@@ -76,7 +98,7 @@ limit Number 默认6
 ossOpts
 阿里OSS上传的参数 具体移步阿里oss文档
 
-before-upload	function(url)
+before-upload	function(file)
 上传文件之前的钩子，参数为上传的文件，若返回 false 或者返回 Promise 且被 reject，则停止上传。
 
 before-remove   function(url, index)
@@ -87,7 +109,16 @@ on-preview      function(url)
 
 on-error function(err, file)
 文件上传失败时的钩子
-
-onSuccess funtion(err ,file)
-文件上传成功时的钩子
 ```
+
+| 属性          | 说明                                                                                                    | 类型                 | 默认值     |
+| ------------- | ------------------------------------------------------------------------------------------------------- | -------------------- | ---------- |
+| text          | 文本提示                                                                                                | String               |            |
+| width         | 宽高                                                                                                    | Number,String        | 100        |
+| limit         | 最大允许上传个数                                                                                        | Number               | 6          |
+| ossOpts       | 阿里 OSS 上传的参数 具体移步阿里 oss 文档                                                               | Object               | 无（必填） |
+| before-upload | 上传文件之前的钩子，参数为上传的文件，若返回 false 或者返回 Promise 且被 reject，则停止上传。           | function(file)       |            |
+| before-remove | 删除文件之前的钩子，参数为上传的文件和文件列表，若返回 false 或者返回 Promise 且被 reject，则停止上传。 | function(url, index) |            |
+| on-preview    | 预览图片的钩子                                                                                          | function(url)        |            |
+| on-error      | 文件上传失败时的钩子                                                                                    | function(err,file)   |            |
+| on-success    | 文件上传成功时的钩子                                                                                    | function(url,file)   |            |
