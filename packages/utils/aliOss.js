@@ -18,17 +18,16 @@ export async function ossUpload(file, ossOpts, cb = () => {}) {
   try {
     await axios.post(ossOpts.showurl, request, {
       onUploadProgress: cb
-      // onUploadProgress: progressEvent => {
-      //   const complete =
-      //     ((progressEvent.loaded / progressEvent.total) * 85) | 0;
-      //   this.fileList[index].percentage = complete;
-      // }
     });
     return {
       uuid,
-      url: result
+      url: result,
+      err: null
     };
   } catch (err) {
     console.log("上传OSS失败", err);
+    return {
+      err
+    };
   }
 }

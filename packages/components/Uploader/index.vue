@@ -9,13 +9,13 @@
           <div key="cc-uploader" class="cc-file-list-item">
             <div
               class="cc-file-uploader-warpper"
+              :style="style"
               v-if="this.fileList.length < limit"
             >
               <input
                 class="cc-file-uploader"
                 :accept="accept"
                 @change="handlerUpload"
-                size="2"
                 type="file"
               />
               <div class="cc-upload">
@@ -28,7 +28,7 @@
             :key="item.uuid"
             class="cc-file-list-item"
           >
-            <div class="cc-file-list-item-img-warpper">
+            <div class="cc-file-list-item-img-warpper" :style="style">
               <div class="cc-file-action-warpper">
                 <i class="el-icon-view" @click="preview(index)" />
                 <i class="el-icon-delete" @click="remove(index)" />
@@ -40,7 +40,7 @@
                 <div class="progress-warpper">
                   <Progress
                     type="circle"
-                    :width="90"
+                    :width="width - 10"
                     :percentage="item.percentage"
                   />
                 </div>
@@ -64,6 +64,10 @@ export default {
     Progress
   },
   props: {
+    width: {
+      type: [Number, String],
+      default: 100
+    },
     list: {
       type: Array,
       default: () => []
@@ -91,12 +95,27 @@ export default {
     onPreview: {
       type: Function,
       default: () => {}
+    },
+    onError: {
+      type: Function,
+      default: () => {}
     }
   },
   data() {
     return {
       fileList: []
     };
+  },
+  created() {
+    this.init();
+  },
+  computed: {
+    style() {
+      return {
+        width: `${this.width}px`,
+        height: `${this.width}px`
+      };
+    }
   },
   methods: {
     init() {
@@ -150,7 +169,7 @@ export default {
         }
       ];
       await this.$nextTick();
-      const img = await ossUpload(
+      const result = await ossUpload(
         fileBeforeUpload,
         this.ossOpts,
         progressEvent => {
@@ -159,8 +178,15 @@ export default {
           this.fileList[this.fileList.length - 1].percentage = complete;
         }
       );
-      preLoadImg(img.url, () => {
-        this.fileList[this.fileList.length - 1].url = img.url;
+      if (result.err) {
+        this.onError(result.err, fileBeforeUpload);
+        setTimeout(() => {
+          this.fileList.pop();
+        }, 2000);
+        return;
+      }
+      preLoadImg(result.url, () => {
+        this.fileList[this.fileList.length - 1].url = result.url;
         this.fileList[this.fileList.length - 1].percentage = 100;
       });
     }
@@ -176,8 +202,8 @@ export default {
   overflow: hidden;
   position: relative;
   .cc-file-uploader-warpper {
-    width: 100px;
-    height: 100px;
+    // width: 100px;
+    // height: 100px;
     border-radius: 5px;
     border: 1px dashed #c0ccda;
     &:hover {
@@ -220,8 +246,8 @@ export default {
         border: 1px solid #d9d9d9;
         padding: 5px;
         border-radius: 5px;
-        width: 100px;
-        height: 100px;
+        // width: 100px;
+        // height: 100px;
         position: relative;
         overflow: hidden;
         &:hover {
@@ -277,6 +303,7 @@ export default {
   transition: all 0.3s ease;
   opacity: 0;
   transform: scale(0);
+  left: -100%;
 }
 .list-complete-leave-active {
   position: absolute;

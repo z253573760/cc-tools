@@ -8,11 +8,12 @@
 <template>
   <div class="warpper">
     <Uploader
-      size="size"
+      :limit="limit"
       :before-upload="beforeUpload"
       :ossOpts="ossOpts"
       :before-remove="onRemove"
-      :on-preview="onRemove"
+      :on-preview="onPreview"
+			:on-error="onError"
       :list="list"
     />
   </div>
@@ -33,7 +34,7 @@ export default {
   components: { Uploader },
   data() {
     return {
-			size:5,
+			limit:5,
       ossOpts,
       list: [
        'http://jiangniu-dev.oss-cn-shenzhen.aliyuncs.com/uploads/business_plan/20190923/7c86154c-3e3c-4c09-aee5-af49770bfec7
@@ -51,14 +52,17 @@ export default {
     beforeUpload(url) {
       console.log("外部组件调用 before-uploader", url);
       return file;
-    }
+    },
+		onError(err,file){
+			 console.log("外部组件调用 on-error", err, file);
+		}
   }
 };
 </script>
 ```
 
 ```
-size Number 默认6
+limit Number 默认6
 上传图片的个数 超过限制会自动隐藏 上传组件
 
 ossOpts
@@ -72,4 +76,7 @@ before-remove   function(url, index)
 
 on-preview      function(url)
 预览图片的钩子
+
+on-error function(err,file)
+文件上传失败时的钩子
 ```
