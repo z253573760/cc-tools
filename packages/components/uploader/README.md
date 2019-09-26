@@ -1,6 +1,6 @@
 ### ali-oss 图片上传组件 基于 vue
 
-#### 实际效果
+实际效果
 
 ![image](https://github.com/z253573760/cc-tools/blob/master/src/assets/load/gifhome_480x490_25s.gif?raw=true)
 
@@ -41,7 +41,7 @@ Vue.component("cc-uploader", CcUploader )
 ```
 <template>
   <div class="warpper">
-    <Uploader
+    <cc-uploader
        width="120"
       :ossOpts="ossOpts"
       :limit="limit"
@@ -67,7 +67,7 @@ const ossOpts = {
   signature: "xxxxx"
 };
 export default {
-  components: { Uploader },
+  components: { CcUploader },
   data() {
     return {
       limit:5,
