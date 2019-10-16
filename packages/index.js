@@ -1,6 +1,6 @@
-import "element-ui/lib/theme-chalk/index.css";
+// import "element-ui/lib/theme-chalk/index.css";
 import directiveInit from "./directives";
-// import Uploader from "./components/uploader/index.js";
+import Uploader from "./components/uploader/index.js";
 import mediaInit from "./plugins/match-media";
 import { dateFormate } from "./utils/tools";
 export {
@@ -38,8 +38,8 @@ const install = (Vue, $options = {}) => {
   Vue.filter("dateFormate", dateFormate);
 };
 
-export const CcUploader = () => import("./components/uploader/index.js");
+export const CcUploader = Uploader;
 export default {
   install,
-  CcUploader
+  CcUploader: Uploader
 };

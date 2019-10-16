@@ -14,6 +14,7 @@
             >
               <input
                 class="cc-file-uploader"
+                :style="style"
                 :accept="accept"
                 @change="handlerUpload"
                 type="file"
@@ -93,7 +94,7 @@ export default {
     },
     beforeUpload: {
       type: Function,
-      default: () => true
+      default: file => file
     },
     beforeRemove: {
       type: Function,
@@ -211,6 +212,11 @@ export default {
         this.onSuccess(result.url, fileBeforeUpload);
       });
     }
+  },
+  watch: {
+    list(cur) {
+      this.init();
+    }
   }
 };
 </script>
@@ -229,8 +235,10 @@ export default {
   overflow: hidden;
   position: relative;
   .cc-file-uploader-warpper {
+    overflow: hidden;
     // width: 100px;
     // height: 100px;
+
     border-radius: 5px;
     border: 1px dashed #c0ccda;
     &:hover {
@@ -239,11 +247,10 @@ export default {
     .cc-file-uploader {
       position: absolute;
       cursor: pointer;
+      //background: red;
       opacity: 0;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
     }
     .cc-upload {
       color: #8c939d;

@@ -6,11 +6,11 @@
 </template>
 <script>
 import { text } from "@/assets/text.json";
-import test from "@/study-vue/test";
+// import test from "@/study-vue/test";
 export default {
   data() {
     return {
-      text: text
+      text: "text"
     };
   },
   created() {
