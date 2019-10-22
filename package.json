@@ -1,6 +1,6 @@
 {
   "name": "@zhoucanyu/cc-tools",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "private": false,
   "main": "lib/cc-tools.umd.min.js",
   "description": "基于 Vue 自己封装的一些工具",

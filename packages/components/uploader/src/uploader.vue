@@ -171,6 +171,7 @@ export default {
       const fileBeforeUpload = await this.handlerBeforeUpload(file);
       if (!fileBeforeUpload) return;
       if (!this.ossOpts) return;
+      const curIndex = this.fileList.length - 1;
       const uuid = generateUUID();
       this.fileList = [
         ...this.fileList,
@@ -187,7 +188,7 @@ export default {
         progressEvent => {
           const complete =
             ((progressEvent.loaded / progressEvent.total) * 60) | 0;
-          this.fileList[this.fileList.length - 1].percentage = complete;
+          this.fileList[curIndex].percentage = complete;
         }
       );
       if (result.err) {
@@ -198,17 +199,17 @@ export default {
         return;
       }
       const timer = setInterval(() => {
-        if (this.fileList[this.fileList.length - 1].percentage >= 95) {
+        if (this.fileList[curIndex].percentage >= 95) {
           clearInterval(timer);
           return;
         }
-        this.fileList[this.fileList.length - 1].percentage =
-          this.fileList[this.fileList.length - 1].percentage + 1;
+        this.fileList[curIndex].percentage =
+          this.fileList[curIndex].percentage + 1;
       }, 500);
       preLoadImg(result.url, () => {
         clearInterval(timer);
-        this.fileList[this.fileList.length - 1].url = result.url;
-        this.fileList[this.fileList.length - 1].percentage = 100;
+        this.fileList[curIndex].url = result.url;
+        this.fileList[curIndex].percentage = 100;
         this.onSuccess(result.url, fileBeforeUpload);
       });
     }
