@@ -26,4 +26,4 @@ Vue.use(Cc);
 
 ## 🐛 Issues
 
-如果你发现了错误，请在我们 GitHub 的 Issues 上提出问题。
+如果你发现了错误，请在我们 GitHub 的 Issues 上提出问题
