@@ -171,7 +171,7 @@ export default {
       const fileBeforeUpload = await this.handlerBeforeUpload(file);
       if (!fileBeforeUpload) return;
       if (!this.ossOpts) return;
-      const curIndex = this.fileList.length - 1;
+
       const uuid = generateUUID();
       this.fileList = [
         ...this.fileList,
@@ -181,6 +181,7 @@ export default {
           percentage: 0
         }
       ];
+      const curIndex = this.fileList.length - 1;
       await this.$nextTick();
       const result = await ossUpload(
         fileBeforeUpload,
